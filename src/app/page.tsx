@@ -1,7 +1,20 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 
+export const revalidate = 30;
+
 export default function Home() {
+    // 現在の日付を取得する
+  const now = new Date();
+
+  // 年、月、日を取得する
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; // 0から始まるので+1する
+  const day = now.getDate();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+  const second = now.getSeconds();
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -29,14 +42,7 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+        {`${year}年${month}月${day}日 ${hour}:${minute}:${second}`}
       </div>
 
       <div className={styles.grid}>
